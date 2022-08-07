@@ -1,0 +1,37 @@
+<div class="col-md-4 offset-md-4 mt-5">
+    <div class="card">
+      <h4 class="card-header">Login</h4>
+      <div class="card-body">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <mat-form-field appearance="outline" class="col-md-12">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email">
+              <mat-icon matSuffix>email</mat-icon>
+              <!-- <mat-hint *ngIf="loginForm.controls['email'].errors">Email is invalid</mat-hint> -->
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field appearance="outline" class="col-md-12">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password">
+              <mat-icon matSuffix>password</mat-icon>
+              <!-- <mat-hint *ngIf="loginForm.controls['password'].errors">Password is invalid</mat-hint> -->
+            </mat-form-field>
+          </div>
+          <div class="alert alert-danger feedback" *ngIf="loginError">
+            Both are incorrect
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="form-group" align="end">
+              <button type='submit' class="btn btn-primary" [disabled]="!loginForm.valid">
+                <span *ngIf="overlayDisplay" class="spinner-border spinner-border-sm mr-1"></span>
+                Login
+              </button>
+              <a routerLink="../register" class="btn btn-link">Register</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <router-outlet></router-outlet>

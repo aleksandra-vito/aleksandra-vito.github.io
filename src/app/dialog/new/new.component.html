@@ -1,0 +1,52 @@
+<form [formGroup]="createJobOffer" novalidate>
+    <div class="form-group row justify-content-end" style="padding: 0px 20px;">
+        <button type="button" class="close" aria-label="Close" (click)="close()"><span class="material-icons">
+                cancel
+            </span></button>
+    </div>
+    <div class="row">
+        <mat-form-field appearance="outline" class="col-md-12">
+            <mat-label>Title *</mat-label>
+            <input matInput formControlName="title">
+            <mat-icon matSuffix>title</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field appearance="outline" class="col-md-12">
+            <mat-label>Description *</mat-label>
+            <textarea matInput #message maxlength="256" placeholder="Hard skills for this job..."
+                formControlName="description"></textarea>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field appearance="outline" class="col-md-12">
+            <mat-label>Company Name *</mat-label>
+            <input matInput formControlName="company">
+            <mat-icon matSuffix>view_compact</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field appearance="outline" class="col-md-12">
+            <mat-label>Years of experience *</mat-label>
+            <mat-select disableRipple formControlName="yearExp">
+                <mat-option value="0">0-6 months</mat-option>
+                <mat-option value="1">1 year</mat-option>
+                <mat-option value="2">2 years</mat-option>
+                <mat-option value="3">3 years</mat-option>
+                <mat-option value="4">>3 years</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field appearance="outline" class="col-md-12">
+            <mat-label>Location *</mat-label>
+            <input matInput formControlName="place">
+            <mat-icon matSuffix>place</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="form-group row py-3 justify-content-end" style="padding: 0px 20px;margin-bottom: 0px;">
+        <button type="button" type="button" class="btn" (click)="(data.data !== '') ? updateJob() : saveJob()"
+            [disabled]="!(createJobOffer.touched && createJobOffer.dirty && createJobOffer.valid)"
+            [ngClass]="(createJobOffer.touched && createJobOffer.dirty && createJobOffer.valid) ? 'btn btn-primary' : 'btn-light'">{{butonDialog}}</button>
+    </div>
+</form>

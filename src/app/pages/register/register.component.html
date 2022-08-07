@@ -1,0 +1,113 @@
+<!-- <div class="container">
+    <div class="row justify-content-center p-4">
+        <div class="col-md-6">
+            <form (ngSubmit)="register()">
+                <h3>Firebase Register</h3>
+                <div class="form-group p-2">
+                    <input type="email" name="email" class="form-control" [(ngModel)]="email"
+                        placeholder="Enter email Id" required>
+                </div>
+                <div class="form-group p-2">
+                    <input type="password" name="password" class="form-control" [(ngModel)]="password"
+                        placeholder="Enter Password" required>
+                </div>
+                <div class="form-group p-2">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    <div class="register"><a href="#" routerLink="/login">Back To Login</a></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->
+
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="card">
+      <h4 class="card-header">Register</h4>
+      <div class="card-body">
+        <form [formGroup]="registrationForm" (ngSubmit)="register()">
+          <div class="row">
+            <mat-form-field appearance="outline" class="col-md-6">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName">
+              <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col-md-6">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName">
+              <mat-icon matSuffix>person_outline</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field appearance="outline" class="col-md-12">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="userEmail">
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field appearance="outline" class="col-md-12">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password">
+              <mat-icon matSuffix>password</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field color="accent" appearance="outline" class="col-md-4">
+              <mat-label>Birthday</mat-label>
+              <input matInput [matDatepicker]="picker2" formControlName="birthDay">
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2 color="primary"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col-md-4">
+              <mat-label>Sex</mat-label>
+              <mat-select disableRipple formControlName="sex">
+                <mat-option value="0">Woman</mat-option>
+                <mat-option value="2">Man</mat-option>
+                <mat-option value="3">Nothing to say</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col-md-4">
+              <mat-label>Type</mat-label>
+              <mat-select disableRipple formControlName="type" (selectionChange)="onSelected($event.value)">
+                <mat-option value="jobseeker">Job seeker</mat-option>
+                <mat-option value="joboffer">Recruiter</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div *ngIf="appearRow">
+            <div class="row">
+              <mat-form-field appearance="outline" class="col-md-6">
+                <mat-label>Your actual job position</mat-label>
+                <input matInput formControlName="jobPosition">
+                <mat-icon matSuffix>work</mat-icon>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="col-md-6">
+                <mat-label>Years of experience</mat-label>
+                <mat-select disableRipple formControlName="yearExp">
+                  <mat-option value="0">0-6 months</mat-option>
+                  <mat-option value="1">1 year</mat-option>
+                  <mat-option value="2">2 years</mat-option>
+                  <mat-option value="3">3 years</mat-option>
+                  <mat-option value="4">>3 years</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="example-full-width" appearance="outline" class="col-md-12">
+                <mat-label>Description of your skills</mat-label>
+                <textarea matInput #message maxlength="256" placeholder="My hard skills are..."></textarea>
+                <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="alert alert-danger feedback" *ngIf="registrationError">{{message}}</div>
+          <div class="alert alert-success feedback" *ngIf="registrationSuccess">{{message}}</div>
+          <div class="example-button-row" align="end">
+            <button class="btn btn-primary" [disabled]="registrationForm?.invalid || registrationForm?.pristine">Register</button>
+          </div>
+          <!-- <a *ngIf="registrationSuccess" routerLink="../login" class="btn btn-link">Login</a>
+          <a *ngIf="!registrationSuccess" routerLink="../login" class="btn btn-link">Cancel</a> -->
+        </form>
+      </div>
+    </div>
+  </div>
